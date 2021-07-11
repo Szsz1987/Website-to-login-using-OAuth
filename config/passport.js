@@ -1,4 +1,3 @@
-require('dotenv').config()
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
@@ -7,9 +6,8 @@ passport.use(new GoogleStrategy({
   clientID: process.env.clientID,
   clientSecret: process.env.clientSecret,
   callbackURL: process.env.callbackURL,
-}, (profile, done) => {
-  console.log(profile);
-  done(null, profile);
+}, (accessToken, refreshToken, profile, done) => {
+done(null, profile);
 }));
 
 // serialize user when saving to session
@@ -20,4 +18,4 @@ passport.serializeUser((user, serialize) => {
 // deserialize user when reading from session
 passport.deserializeUser((obj, deserialize) => {
   deserialize(null, obj);
-}); 
+});

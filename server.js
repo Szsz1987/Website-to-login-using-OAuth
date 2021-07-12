@@ -2,8 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const hbs = require('express-handlebars');
+const passport = require('passport');
 const session = require('express-session');
-const passport = require('./config/passport');
+const passportSetup = require('./config/passport');
 
 const app = express();
 
@@ -37,4 +38,4 @@ app.use('/', (req, res) => {
 
 app.listen('8000', () => {
   console.log('Server is running on port: 8000');
-}); 
+});
